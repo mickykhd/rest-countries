@@ -1,0 +1,19 @@
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.068);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+}
+
+.nav-hero {
+  text-transform: capitalize;
+}
+.nav-btn {
+  text-transform: capitalize;
+  background-color: white;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.3rem;
+}

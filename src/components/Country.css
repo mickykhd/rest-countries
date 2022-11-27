@@ -1,0 +1,21 @@
+.country-container {
+  border-radius: 10px;
+  /* border: 1px solid black; */
+  margin-top: 1rem;
+  text-transform: capitalize;
+  background-color: white;
+  height: auto;
+  width: 320px;
+}
+.country-img {
+  border-radius: 10px;
+}
+.master-country-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-items: center;
+  background-color: rgba(0, 0, 0, 0.144);
+}
+.country-info-container {
+  margin-left: 1rem;
+}
