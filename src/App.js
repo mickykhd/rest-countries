@@ -3,14 +3,18 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Country from "./components/Country";
-import Filter from "./components/Filter";
+import SingleCountry from "./components/SingleCountry";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Filter />
-      <Country />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Country />} />
+          <Route path="/country/:official" element={<SingleCountry />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
