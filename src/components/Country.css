@@ -16,6 +16,15 @@
   justify-items: center;
   background-color: rgba(0, 0, 0, 0.144);
 }
+
+@media screen and (max-width: 480px) {
+  .master-country-container {
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    background-color: rgba(0, 0, 0, 0.144);
+  }
+}
 .country-info-container {
   margin-left: 1rem;
 }
