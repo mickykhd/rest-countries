@@ -8,6 +8,7 @@ const Country = () => {
   const [inputName, setInputName] = useState("a");
   const [countryName, setCountryName] = useState([]);
   const [newLoad, setNewLoad] = useState(true);
+  const [dropDown, setDropDown] = useState(true);
 
   const handledInput = (e) => {
     setInputName(e.target.value);
@@ -22,17 +23,17 @@ const Country = () => {
     try {
       const response = await fetch(`${url}${inputName}`);
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setCountryName(data);
       if (data.status === 404) {
         setNewLoad(false);
         setCountryName([]);
       }
     } catch (error) {
-      console.log(error);
+      console.Name(error);
     }
   };
-  console.log(inputName);
+  // console.log(inputName);
   useEffect(() => {
     if (newLoad) {
       handleCountryByName();
@@ -50,12 +51,21 @@ const Country = () => {
           />
         </div>
         <div className="filter-region">
-          <div className="dropdown">
-            <button className="dropbtn">Filter By Region</button>
-            <div className="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+          <div className="container">
+            <button className="click" onClick={() => setDropDown(!dropDown)}>
+              Click Me
+            </button>
+
+            <div className={dropDown ? "list" : "list newlist"}>
+              <button className="links">Link 1</button>
+
+              <button className="links">Link 2</button>
+
+              <button className="links">Link 3</button>
+
+              <button className="links">Link 4</button>
+
+              <button className="links">Link 5</button>
             </div>
           </div>
         </div>
@@ -68,7 +78,7 @@ const Country = () => {
               population,
               flags: { png, svg },
               region,
-              name: { official },
+              name: { common, official },
             } = singleCountry;
 
             return (
@@ -79,7 +89,7 @@ const Country = () => {
                   <h3>Population: {population}</h3>
                   <h3>region: {region}</h3>
                   <h3>capital: {capital}</h3>
-                  <Link to={`/country/${official}`}>More Details</Link>
+                  <Link to={`/country/${capital}`}>More Details</Link>
                 </div>
               </div>
             );

@@ -12,7 +12,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Country />} />
-          <Route path="/country/:official" element={<SingleCountry />} />
+          <Route path="/country/:capital" element={<SingleCountry />} />
         </Routes>
       </BrowserRouter>
     </>
