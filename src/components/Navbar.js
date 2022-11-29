@@ -6,7 +6,6 @@ function Navbar() {
     <>
       <div className="nav-header">
         <h1 className="nav-hero">where in the world?</h1>
-        <button className="nav-btn">dark mode</button>
       </div>
     </>
   );
