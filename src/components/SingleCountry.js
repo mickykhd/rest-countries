@@ -9,14 +9,14 @@ function SingleCountry() {
   const [singleCountry, setSingleCountry] = React.useState([]);
   const [loading, setloading] = React.useState(false);
   const { capital } = useParams();
-  console.log(capital);
+  // console.log(capital);
   const handleSingleCountry = async () => {
     setloading(true);
     try {
       const response = await fetch(`${url}${capital}`);
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setSingleCountry(data);
       setloading(false);
     } catch (error) {
@@ -44,7 +44,7 @@ function SingleCountry() {
 
               flags: { png },
             } = item;
-            console.log(item);
+            //
 
             return (
               <div key={index}>
@@ -58,7 +58,9 @@ function SingleCountry() {
 
                 {/* {<h2>Currencies: {bkb}</h2>} */}
                 {/* <h2>Languages: {ara}</h2> */}
-                <Link to="/">Back To Home</Link>
+                <Link to="/">
+                  <button className="country-link">Back to home page</button>
+                </Link>
               </div>
             );
           })

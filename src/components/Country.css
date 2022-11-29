@@ -24,6 +24,12 @@
   justify-content: space-between;
   margin-top: 0.4rem;
 }
+.country-link {
+  text-transform: capitalize;
+  padding: 0.5rem;
+  background-color: #01579b;
+  color: white;
+}
 
 /* Dropdown styling */
 

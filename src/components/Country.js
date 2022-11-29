@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Country.css";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 const url = "https://restcountries.com/v3.1/name/";
+const regionURL = "https://restcountries.com/v3.1/region/";
 
 const Country = () => {
   const [inputName, setInputName] = useState("a");
   const [countryName, setCountryName] = useState([]);
   const [newLoad, setNewLoad] = useState(true);
   const [dropDown, setDropDown] = useState(true);
+  const [countryByRegion, setCountryByRegion] = useState();
 
   const handledInput = (e) => {
     setInputName(e.target.value);
@@ -36,9 +39,32 @@ const Country = () => {
   // console.log(inputName);
   useEffect(() => {
     if (newLoad) {
-      handleCountryByName();
+      if (newLoad) {
+        handleCountryByName();
+      }
     }
   }, [inputName]);
+  const handleDropDown = (e) => {
+    const counrtyRegion = e.target.name;
+    e.preventDefault();
+    setCountryByRegion(counrtyRegion);
+    console.log(countryByRegion);
+  };
+  const fetchCountryByRegion = async () => {
+    if (countryByRegion) {
+      const response = await fetch(`${regionURL}${countryByRegion}`);
+      const data = await response.json();
+      setCountryName(data);
+    }
+
+    if (countryByRegion) {
+    }
+  };
+
+  useEffect(() => {
+    fetchCountryByRegion();
+  }, [countryByRegion]);
+
   return (
     <>
       <div className="filter-container">
@@ -54,26 +80,27 @@ const Country = () => {
           <div className="dropdown-container">
             <button className="click" onClick={() => setDropDown(!dropDown)}>
               Filter by Region
+              <BsFillArrowDownCircleFill />
             </button>
 
             <div className={dropDown ? "list" : "list newlist"}>
-              <button className="links" name="africa">
+              <button className="links" name="africa" onClick={handleDropDown}>
                 Africa
               </button>
 
-              <button className="links" name="america">
+              <button className="links" name="america" onClick={handleDropDown}>
                 America
               </button>
 
-              <button className="links" name="asia">
+              <button className="links" name="asia" onClick={handleDropDown}>
                 Asia
               </button>
 
-              <button className="links" name="europe">
+              <button className="links" name="europe" onClick={handleDropDown}>
                 Europe
               </button>
 
-              <button className="links" name="oceania">
+              <button className="links" name="oceania" onClick={handleDropDown}>
                 Oceania
               </button>
             </div>
@@ -99,7 +126,9 @@ const Country = () => {
                   <h3>Population: {population}</h3>
                   <h3>region: {region}</h3>
                   <h3>capital: {capital}</h3>
-                  <Link to={`/country/${capital}`}>More Details</Link>
+                  <Link to={`/country/${capital}`}>
+                    <button className="country-link">More details</button>
+                  </Link>
                 </div>
               </div>
             );
