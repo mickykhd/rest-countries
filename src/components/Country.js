@@ -51,21 +51,31 @@ const Country = () => {
           />
         </div>
         <div className="filter-region">
-          <div className="container">
+          <div className="dropdown-container">
             <button className="click" onClick={() => setDropDown(!dropDown)}>
-              Click Me
+              Filter by Region
             </button>
 
             <div className={dropDown ? "list" : "list newlist"}>
-              <button className="links">Link 1</button>
+              <button className="links" name="africa">
+                Africa
+              </button>
 
-              <button className="links">Link 2</button>
+              <button className="links" name="america">
+                America
+              </button>
 
-              <button className="links">Link 3</button>
+              <button className="links" name="asia">
+                Asia
+              </button>
 
-              <button className="links">Link 4</button>
+              <button className="links" name="europe">
+                Europe
+              </button>
 
-              <button className="links">Link 5</button>
+              <button className="links" name="oceania">
+                Oceania
+              </button>
             </div>
           </div>
         </div>
