@@ -29,6 +29,7 @@
   padding: 0.5rem;
   background-color: #01579b;
   color: white;
+  cursor: pointer;
 }
 
 /* Dropdown styling */

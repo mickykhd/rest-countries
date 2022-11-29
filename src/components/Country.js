@@ -12,6 +12,7 @@ const Country = () => {
   const [newLoad, setNewLoad] = useState(true);
   const [dropDown, setDropDown] = useState(true);
   const [countryByRegion, setCountryByRegion] = useState();
+  const [extraLoad, setExtraLoad] = useState(true);
 
   const handledInput = (e) => {
     setInputName(e.target.value);
@@ -23,41 +24,34 @@ const Country = () => {
   };
 
   const handleCountryByName = async () => {
-    try {
-      const response = await fetch(`${url}${inputName}`);
-      const data = await response.json();
-      // console.log(data);
-      setCountryName(data);
-      if (data.status === 404) {
-        setNewLoad(false);
-        setCountryName([]);
-      }
-    } catch (error) {
-      console.Name(error);
+    const response = await fetch(`${url}${inputName}`);
+    const data = await response.json();
+    // console.log(data);
+    setCountryName(data);
+    if (data.status === 404) {
+      setNewLoad(false);
+      setCountryName([]);
     }
   };
   // console.log(inputName);
   useEffect(() => {
-    if (newLoad) {
-      if (newLoad) {
-        handleCountryByName();
-      }
+    if (inputName) {
+      handleCountryByName();
     }
   }, [inputName]);
   const handleDropDown = (e) => {
+    setCountryName([]);
+    setNewLoad(true);
     const counrtyRegion = e.target.name;
     e.preventDefault();
     setCountryByRegion(counrtyRegion);
-    console.log(countryByRegion);
+    // console.log(countryByRegion);
   };
   const fetchCountryByRegion = async () => {
     if (countryByRegion) {
       const response = await fetch(`${regionURL}${countryByRegion}`);
       const data = await response.json();
       setCountryName(data);
-    }
-
-    if (countryByRegion) {
     }
   };
 
