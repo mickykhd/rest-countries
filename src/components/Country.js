@@ -7,7 +7,7 @@ const url = "https://restcountries.com/v3.1/name/";
 const regionURL = "https://restcountries.com/v3.1/region/";
 
 const Country = () => {
-  const [inputName, setInputName] = useState("india");
+  const [inputName, setInputName] = useState("");
   const [countryName, setCountryName] = useState([]);
   const [newLoad, setNewLoad] = useState(true);
 
