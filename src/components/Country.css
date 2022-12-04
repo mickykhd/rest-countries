@@ -29,6 +29,9 @@
     justify-items: center;
     background-color: rgba(0, 0, 0, 0.144);
   }
+  .search-bar {
+    font-size: 0.8rem;
+  }
 }
 .country-info-container {
   margin-left: 1rem;
