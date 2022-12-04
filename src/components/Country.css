@@ -7,6 +7,11 @@
   height: auto;
   width: 320px;
 }
+.search-bar {
+  height: 2rem;
+  font-size: 1.5rem;
+  color: blueviolet;
+}
 .country-img {
   border-radius: 10px;
 }
@@ -39,61 +44,16 @@
   background-color: #01579b;
   color: white;
   cursor: pointer;
-}
-
-/* Dropdown styling */
-
-.click {
-  background-color: #000000;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.click:hover {
-  background-color: #0000009c;
-}
-
-.click,
-.links {
-  padding: 5px;
-
-  font-size: 1.2em;
-
-  font-family: futura Md BT;
-
   border: none;
-
-  outline: none;
-
-  width: 200px;
-
-  color: #fff;
-
-  transition: 0.3s;
+  font-size: 1rem;
 }
-
-.list {
-  position: absolute;
-
-  transform: scaleY(0);
-
-  transform-origin: top;
-
-  transition: 0.3s;
+.country-selection {
+  height: 2rem;
+  font-size: 0.8rem;
+  border: none;
+  background-color: black;
+  color: white;
 }
-
-.newlist {
-  transform: scaleY(1);
+.lable-selection {
+  margin-right: 5px;
 }
-
-.links {
-  background-color: #000000;
-}
-
-.links:hover {
-  background-color: #01579b;
-
-  transform: scale(1.1);
-  cursor: pointer;
-}
-/* End of Dropdown styling */

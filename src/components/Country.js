@@ -7,12 +7,11 @@ const url = "https://restcountries.com/v3.1/name/";
 const regionURL = "https://restcountries.com/v3.1/region/";
 
 const Country = () => {
-  const [inputName, setInputName] = useState("a");
+  const [inputName, setInputName] = useState("india");
   const [countryName, setCountryName] = useState([]);
   const [newLoad, setNewLoad] = useState(true);
-  const [dropDown, setDropDown] = useState(true);
+
   const [countryByRegion, setCountryByRegion] = useState();
-  const [extraLoad, setExtraLoad] = useState(true);
 
   const handledInput = (e) => {
     setInputName(e.target.value);
@@ -42,7 +41,7 @@ const Country = () => {
   const handleDropDown = (e) => {
     setCountryName([]);
     setNewLoad(true);
-    const counrtyRegion = e.target.name;
+    const counrtyRegion = e.target.value;
     e.preventDefault();
     setCountryByRegion(counrtyRegion);
     // console.log(countryByRegion);
@@ -66,39 +65,31 @@ const Country = () => {
           <input
             type="text"
             placeholder="Search for a country..."
+            className="search-bar"
             value={inputName}
             onChange={handledInput}
           />
         </div>
         <div className="filter-region">
-          <div className="dropdown-container">
-            <button className="click" onClick={() => setDropDown(!dropDown)}>
-              Filter by Region
-              <BsFillArrowDownCircleFill />
-            </button>
-
-            <div className={dropDown ? "list" : "list newlist"}>
-              <button className="links" name="africa" onClick={handleDropDown}>
-                Africa
-              </button>
-
-              <button className="links" name="america" onClick={handleDropDown}>
-                America
-              </button>
-
-              <button className="links" name="asia" onClick={handleDropDown}>
-                Asia
-              </button>
-
-              <button className="links" name="europe" onClick={handleDropDown}>
-                Europe
-              </button>
-
-              <button className="links" name="oceania" onClick={handleDropDown}>
-                Oceania
-              </button>
-            </div>
-          </div>
+          <label htmlFor="country-selection" className="lable-selection">
+            Select Your Country
+          </label>
+          <select
+            name=""
+            id="country-selection"
+            className="country-selection"
+            onChange={handleDropDown}
+            defaultValue={"DEFAULT"}
+          >
+            <option value="DEFAULT" disabled>
+              Choose a option ...
+            </option>
+            <option value="africa">Africa</option>
+            <option value="america">America</option>
+            <option value="asia">Asia</option>
+            <option value="europe">Europe</option>
+            <option value="oceania">Oceania</option>
+          </select>
         </div>
       </div>
       <div className="master-country-container">
@@ -116,7 +107,7 @@ const Country = () => {
               <div key={index} className="country-container">
                 <img className="country-img" src={png} alt={official} />
                 <div className="country-info-container">
-                  <h2>{official}</h2>
+                  <h2>{common}</h2>
                   <h3>Population: {population}</h3>
                   <h3>region: {region}</h3>
                   <h3>capital: {capital}</h3>
