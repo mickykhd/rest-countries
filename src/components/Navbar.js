@@ -5,8 +5,8 @@ function Navbar() {
   return (
     <>
       <div className="nav-header">
-        <h1 className="nav-hero">where in the world?</h1>
-        <h3>Designed & Logic By Ashrumochan</h3>
+        <p className="nav-hero">where in the world?</p>
+        <p className="authon-name">Designed & Logic By Ashrumochan</p>
       </div>
     </>
   );

@@ -8,6 +8,8 @@
 
 .nav-hero {
   text-transform: capitalize;
+  font-weight: 900;
+  font-size: 2rem;
 }
 .nav-btn {
   text-transform: capitalize;
@@ -16,4 +18,21 @@
   font-size: 1rem;
   font-weight: bold;
   padding: 0.3rem;
+}
+.authon-name {
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1rem;
+}
+@media screen and (max-width: 480px) {
+  .nav-hero {
+    text-transform: capitalize;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: rgb(73, 73, 215);
+  }
+  .authon-name {
+    margin-left: 7.3rem;
+    color: rgb(212, 43, 43);
+  }
 }

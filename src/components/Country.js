@@ -71,9 +71,9 @@ const Country = () => {
           />
         </div>
         <div className="filter-region">
-          <label htmlFor="country-selection" className="lable-selection">
+          {/* <label htmlFor="country-selection" className="lable-selection">
             Select Your Country
-          </label>
+          </label> */}
           <select
             name=""
             id="country-selection"
@@ -82,7 +82,7 @@ const Country = () => {
             defaultValue={"DEFAULT"}
           >
             <option value="DEFAULT" disabled>
-              Choose a option ...
+              Choose a Region ...
             </option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
