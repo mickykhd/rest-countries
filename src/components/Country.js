@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Country.css";
-import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 const url = "https://restcountries.com/v3.1/name/";
 const regionURL = "https://restcountries.com/v3.1/region/";
@@ -60,7 +59,17 @@ const Country = () => {
 
   return (
     <>
-      <div className="filter-container">
+      <header className="page-header">
+        <div>
+          <p className="pill muted">Global Explorer</p>
+          <h1 className="page-title">Discover countries in style</h1>
+          <p className="page-subtitle">
+            Search by name or filter by region to browse curated country cards with modern visuals.
+          </p>
+        </div>
+      </header>
+
+      <section className="control-panel glass-card">
         <div className="filter-input">
           <input
             type="text"
@@ -71,18 +80,14 @@ const Country = () => {
           />
         </div>
         <div className="filter-region">
-          {/* <label htmlFor="country-selection" className="lable-selection">
-            Select Your Country
-          </label> */}
           <select
-            name=""
             id="country-selection"
             className="country-selection"
             onChange={handleDropDown}
             defaultValue={"DEFAULT"}
           >
             <option value="DEFAULT" disabled>
-              Choose a Region ...
+              Filter by region
             </option>
             <option value="africa">Africa</option>
             <option value="america">America</option>
@@ -91,39 +96,56 @@ const Country = () => {
             <option value="oceania">Oceania</option>
           </select>
         </div>
-      </div>
+      </section>
+
       <div className="master-country-container">
         {newLoad ? (
           countryName.map((singleCountry, index) => {
             const {
               capital,
               population,
-              flags: { png, svg },
+              flags: { png },
               region,
               name: { common, official },
             } = singleCountry;
 
             return (
-              <div key={index} className="country-container">
-                <img className="country-img" src={png} alt={official} />
+              <div key={index} className="country-container glass-card">
+                <div className="flag-wrapper">
+                  <img className="country-img" src={png} alt={official} loading="lazy" />
+                </div>
                 <div className="country-info-container">
-                  <h2>{common}</h2>
-                  <h3>Population: {population}</h3>
-                  <h3>region: {region}</h3>
-                  <h3>capital: {capital}</h3>
-                  <Link to={`/country/${capital}`}>
-                    <button className="country-link">More details</button>
+                  <div className="country-header">
+                    <h2 className="country-name">{common}</h2>
+                    <span className="badge">{region}</span>
+                  </div>
+                  <p className="muted">Official: {official}</p>
+                  <div className="metrics">
+                    <p>
+                      <span className="metric-label">Population</span>
+                      <span className="metric-value">{population?.toLocaleString?.()}</span>
+                    </p>
+                    <p>
+                      <span className="metric-label">Capital</span>
+                      <span className="metric-value">{capital || "N/A"}</span>
+                    </p>
+                  </div>
+                  <Link to={`/country/${capital}`} className="country-link">
+                    View details
                   </Link>
                 </div>
               </div>
             );
           })
         ) : (
-          <h2>Enter a valid country Name</h2>
+          <div className="empty-state glass-card">
+            <p className="empty-title">No matches yet</p>
+            <p className="muted">Try another country name or region.</p>
+          </div>
         )}
       </div>
     </>
   );
-};
+}
 
 export default Country;

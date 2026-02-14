@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -7,15 +6,17 @@ import SingleCountry from "./components/SingleCountry";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div className="app-shell">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Country />} />
-          <Route path="/country/:capital" element={<SingleCountry />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Country />} />
+            <Route path="/country/:capital" element={<SingleCountry />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 

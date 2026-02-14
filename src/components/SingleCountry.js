@@ -1,7 +1,6 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import LoadingAnimation from "./LoadingAnimation";
-import { Link } from "react-router-dom";
 import "./SingleCountry.css";
 
 const url = "https://restcountries.com/v3.1/capital/";
@@ -41,27 +40,41 @@ function SingleCountry() {
               region,
               subregion,
               capital,
-
               flags: { png },
             } = item;
-            //
 
             return (
-              <div key={index}>
-                <img src={png} alt="" />
-                <h1>{common}</h1>
-                <h2>Native Name: {official}</h2>
-                <h2>Population : {population}</h2>
-                <h2>Region: {region}</h2>
-                <h2>Sub Region: {subregion}</h2>
-                <h2>Capital: {capital}</h2>
-
-                {/* {<h2>Currencies: {bkb}</h2>} */}
-                {/* <h2>Languages: {ara}</h2> */}
-                <Link to="/">
-                  <button className="country-link">Back to home page</button>
-                </Link>
-              </div>
+              <article key={index} className="single-card glass-card">
+                <div className="single-flag">
+                  <img src={png} alt={official} loading="lazy" />
+                </div>
+                <div className="single-info">
+                  <p className="pill muted">Country profile</p>
+                  <h1 className="single-title">{common}</h1>
+                  <p className="muted">Official: {official}</p>
+                  <div className="single-grid">
+                    <div>
+                      <p className="metric-label">Region</p>
+                      <p className="metric-value">{region}</p>
+                    </div>
+                    <div>
+                      <p className="metric-label">Subregion</p>
+                      <p className="metric-value">{subregion || "N/A"}</p>
+                    </div>
+                    <div>
+                      <p className="metric-label">Capital</p>
+                      <p className="metric-value">{capital || "N/A"}</p>
+                    </div>
+                    <div>
+                      <p className="metric-label">Population</p>
+                      <p className="metric-value">{population?.toLocaleString?.()}</p>
+                    </div>
+                  </div>
+                  <Link to="/" className="back-link">
+                    ← Back to explorer
+                  </Link>
+                </div>
+              </article>
             );
           })
         )}

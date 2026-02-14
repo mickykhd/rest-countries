@@ -1,5 +1,56 @@
+:root {
+  --bg-surface: rgba(255, 255, 255, 0.06);
+  --bg-panel: rgba(255, 255, 255, 0.08);
+  --accent: #7dd3fc;
+  --accent-strong: #38bdf8;
+  --text-primary: #e6ecf5;
+  --text-muted: #9fb2c8;
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.35);
+  --radius: 18px;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 10% 20%, rgba(61, 104, 255, 0.08), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255, 255, 255, 0.06), transparent 30%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0));
+}
+
+.app-main {
+  flex: 1;
+  width: min(1200px, 90vw);
+  margin: 24px auto 64px;
+}
+
+.glass-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft);
+  border-radius: var(--radius);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-primary);
+}
+
+.muted {
+  color: var(--text-muted);
 }

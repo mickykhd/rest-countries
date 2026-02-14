@@ -1,38 +1,41 @@
 .nav-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.068);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.26);
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(10, 15, 28, 0.8), rgba(10, 15, 28, 0.6));
 }
 
 .nav-hero {
   text-transform: capitalize;
-  font-weight: 900;
-  font-size: 2rem;
+  font-weight: 800;
+  font-size: clamp(20px, 3vw, 28px);
+  letter-spacing: -0.4px;
+  color: #f8fafc;
 }
-.nav-btn {
-  text-transform: capitalize;
-  background-color: white;
-  border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.3rem;
-}
+
 .authon-name {
   text-transform: capitalize;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
-@media screen and (max-width: 480px) {
-  .nav-hero {
-    text-transform: capitalize;
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: rgb(73, 73, 215);
+
+@media screen and (max-width: 640px) {
+  .nav-header {
+    padding: 14px 18px;
+    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
   .authon-name {
-    margin-left: 11.6rem;
-    color: rgb(212, 43, 43);
+    font-size: 0.9rem;
   }
 }
