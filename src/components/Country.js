@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import "./Country.css";
 
@@ -21,22 +21,22 @@ const Country = () => {
     }
   };
 
-  const handleCountryByName = async () => {
+  const handleCountryByName = useCallback(async () => {
+    if (!inputName) return;
     const response = await fetch(`${url}${inputName}`);
     const data = await response.json();
-    // console.log(data);
     setCountryName(data);
     if (data.status === 404) {
       setNewLoad(false);
       setCountryName([]);
     }
-  };
+  }, [inputName]);
   // console.log(inputName);
   useEffect(() => {
     if (inputName) {
       handleCountryByName();
     }
-  }, [inputName]);
+  }, [inputName, handleCountryByName]);
   const handleDropDown = (e) => {
     setCountryName([]);
     setNewLoad(true);
@@ -45,17 +45,17 @@ const Country = () => {
     setCountryByRegion(counrtyRegion);
     // console.log(countryByRegion);
   };
-  const fetchCountryByRegion = async () => {
+  const fetchCountryByRegion = useCallback(async () => {
     if (countryByRegion) {
       const response = await fetch(`${regionURL}${countryByRegion}`);
       const data = await response.json();
       setCountryName(data);
     }
-  };
+  }, [countryByRegion]);
 
   useEffect(() => {
     fetchCountryByRegion();
-  }, [countryByRegion]);
+  }, [countryByRegion, fetchCountryByRegion]);
 
   return (
     <>

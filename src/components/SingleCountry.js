@@ -9,23 +9,22 @@ function SingleCountry() {
   const [loading, setloading] = React.useState(false);
   const { capital } = useParams();
   // console.log(capital);
-  const handleSingleCountry = async () => {
+  const handleSingleCountry = React.useCallback(async () => {
     setloading(true);
     try {
       const response = await fetch(`${url}${capital}`);
 
       const data = await response.json();
-      // console.log(data);
       setSingleCountry(data);
       setloading(false);
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [capital]);
 
   React.useEffect(() => {
     handleSingleCountry();
-  }, []);
+  }, [handleSingleCountry]);
 
   return (
     <>
